@@ -16,6 +16,8 @@
 
 结果就是position:fixed失效了，因为他的父元素运用了transform，我的解决办法就是改变布局，让需要position:fixed的元素变成transform元素的兄弟元素，而不是子元素，这样就解决了，如果有更好的解决办法，欢迎大家踊跃发言告知，在此感谢！
 
+------
+
 * 移动端加了overflow:auto导致滚动不流畅的问题
 
 不知道大家开发移动端的过程中有没有需要加overflow-x:hidden;overflow-y:auto;类似这种的情况，加了以后发现滚动变得不流畅了，这个时候只需要给你加了overflow:auto的标签（例如class="list"）加上一个神奇的css属性即可：
@@ -25,3 +27,5 @@
     -webkit-overflow-scrolling:touch;
 }
 ```
+
+------
