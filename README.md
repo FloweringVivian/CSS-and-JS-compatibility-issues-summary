@@ -79,6 +79,39 @@ body{margin:0;}
 
 ------
 
+* IE67下li底部间隙的BUG
+
+问题描述：在ie67下，li本身没浮动，但是li的内容有浮动，li下边就会产生一个间隙。
+
+解决办法：给li设置 float:left或者给li加vertical-align:top。
+
+```javascript
+<style>  
+.list{ width:300px;margin:0;padding:0;}  
+.list li{ list-style:none;height:30px;border:1px solid #000; font-size:12px; line-height:30px; vertical-align:top;}  
+.list a{float:left;}  
+.list span{float:right;}  
+/*  
+    IE6，7下li的间隙  
+    在IE6，7下li本身没浮动,但是li内容有浮动的时候，li下边就会产生3px的间隙  
+    解决办法: 1.给li加浮动 或者 2.给li加vertical-align:top;  
+*/  
+</style>  
+  
+<body>  
+<ul class="list">  
+    <li>  
+        <a href="#">文字文字文字文字文字</a>  
+        <span>作者</span>  
+    </li>  
+    <li>  
+        <a href="#">文字文字文字文字文字</a>  
+        <span>作者</span>  
+    </li>  
+</ul>  
+</body>  
+```
+
 ## 2. JS兼容性问题
 * 判断数据类型
 
