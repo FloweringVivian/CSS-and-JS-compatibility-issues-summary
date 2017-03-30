@@ -17,7 +17,22 @@ CSS和JS兼容性问题总结
 
 问题描述：IE6下最小高度为19像素，设置比19像素小，也会自动扩展到19像素。
 
-解决办法：加overflow:hidden
+解决办法：加overflow:hidden或者font-size:0
+
+```javascript
+<style>  
+body{ margin:0;background:#000;}  
+.box{height:5px;background:red; font-size:0;}  
+/*  
+    在IE6下高度小于19px的元素，高度会被当做19px来处理  
+    解决办法:font-size:0; 或者 overflow:hidden;  
+*/  
+</style>  
+  
+<body>  
+<div class="box"></div>  
+</body> 
+```
 
 ------
 
@@ -110,6 +125,27 @@ body{margin:0;}
     </li>  
 </ul>  
 </body>  
+```
+
+------
+
+* ie6 下子级的相对定位
+
+问题描述：ie6 下父级的overflow:hidden;是包不住子级的相对定位的。
+
+解决办法：父级也设为相对定位。
+
+```javascript
+<style>  
+#box1{width:500px; height:300px; background:blue; overflow:hidden;position:relative;}  
+#box2{width:300px; height:500px; background:yellow; position:relative;}  
+</style>  
+</head>  
+<body>  
+<div id="box1">  
+    <div id="box2"></div>  
+</div>  
+</body> 
 ```
 
 ## 2. JS兼容性问题
