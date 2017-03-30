@@ -5,19 +5,77 @@ CSS和JS兼容性问题总结
 ## 1. CSS兼容性问题
 * z-index兼容性问题
 
-假如页面中A和B是兄弟元素，C是A的子元素，D是B的子元素，当我给C和D都设置了绝对定位(position:absolute)，我给C设置了z-index:10; 给D设置了z-index:11; 此时发现在除了IE6、IE7以外的浏览器中正常显示（D元素在C元素的上层，盖住了C元素），但是在IE6和IE7中却没有达到理想状态，所以想要兼容IE6和IE7的话，解决办法如下：
+问题描述：假如页面中A和B是兄弟元素，C是A的子元素，D是B的子元素，当我给C和D都设置了绝对定位(position:absolute)，我给C设置了z-index:10; 给D设置了z-index:11; 此时发现在除了IE6、IE7以外的浏览器中正常显示（D元素在C元素的上层，盖住了C元素），但是在IE6和IE7中却没有达到理想状态。
 
-给C元素和D元素的父元素，也就是A元素和B元素也设置定位（可以根据实际需求设置相对定位或者绝对定位），并且让A元素的z-index值小于B元素（例如：给A设置z-index:1; 给B设置z-index:2;），此时会发现C元素和D元素的显示效果在IE6和IE7中也达到了理想效果。
+解决办法：给C元素和D元素的父元素，也就是A元素和B元素也设置定位（可以根据实际需求设置相对定位或者绝对定位），并且让A元素的z-index值小于B元素（例如：给A设置z-index:1; 给B设置z-index:2;），此时会发现C元素和D元素的显示效果在IE6和IE7中也达到了理想效果。
 
-总结：如果想让一个元素（D）绝对定位置于另一个元素（C）的上层，不光要把D元素的z-index值设置的大于C元素，还要把D元素的父元素的z-index值大于C元素的父元素（注：不一定是父元素，也可以是祖先元素，但要保证两个祖先元素是兄弟元素）。
+小技巧：如果想让一个元素（D）绝对定位置于另一个元素（C）的上层，不光要把D元素的z-index值设置的大于C元素，还要把D元素的父元素的z-index值大于C元素的父元素（注：不一定是父元素，也可以是祖先元素，但要保证两个祖先元素是兄弟元素）。
 
 ------
 
 * 最小高度问题
 
-IE6下最小高度为19像素，设置比19像素小，也会自动扩展到19像素。
+问题描述：IE6下最小高度为19像素，设置比19像素小，也会自动扩展到19像素。
 
 解决办法：加overflow:hidden
+
+------
+
+* IE6中绝对定位位置错误
+
+问题描述：在ie6中，如果参照物没有触发haslayout ，那么绝对定位的容器的left和bottom就会有问题，在高版本浏览器中，如果定位元素的祖先元素没有设置定位样式，则会相对于body来进行定位。
+
+解决办法：在相对定位的父容器上加入 zoom:1 来触发ie的haslayout即可解决。
+
+小技巧：通常我们在设置一个容器为position:relative的时候 ，都会加上zoom:1来解决很多ie下的问题。
+
+------
+
+* IE6中绝对定位1像素偏差
+
+问题描述：在 IE6 下定位元素的父级宽高都为奇数时，那么在 IE6 下定位元素的 right和bottom都有1像素的偏差。
+
+解决办法：设为偶数。
+
+```javascript
+<style>  
+#box1{width:303px; height:303px;border:1px solid black; position:relative;}  
+#box2{ width:50px; height:50px; background:#7c1; position:absolute;right:-1px;bottom:-1px;}  
+</style>  
+  
+<body>  
+<div id="box1">  
+    <div id="box2"></div>  
+</div>  
+</body> 
+```
+
+------
+
+* IE6浮动元素双边距bug
+
+问题描述：IE6下块元素有浮动和横向margin的时候，横向的margin值被放大成两倍。
+
+解决办法：给浮动元素加 display:inline。
+
+```javascript
+<style>  
+body{margin:0;}  
+.wrap{float:left;border:2px solid #000;}  
+.box{width:100px;height:100px;background:red;margin:0 100px;float:left;display:inline; }  
+/*  
+    IE6下的双边距BUG:  
+    在IE6下，块元素有浮动和横向margin的时候，横向的margin值会被放大成两倍  
+    解决办法: display:inline;  
+*/  
+</style>  
+  
+<body>  
+<div class="wrap">  
+<div class="box"></div>  
+</div>  
+</body> 
+```
 
 ------
 
