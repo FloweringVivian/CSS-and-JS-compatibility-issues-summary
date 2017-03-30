@@ -39,8 +39,8 @@ CSS和JS兼容性问题总结
 
 ```javascript
 <style>  
-#box1{width:303px; height:303px;border:1px solid black; position:relative;}  
-#box2{ width:50px; height:50px; background:#7c1; position:absolute;right:-1px;bottom:-1px;}  
+#box1{width:303px;height:303px;border:1px solid black;position:relative;}  
+#box2{width:50px;height:50px;background:#7c1;position:absolute;right:-1px;bottom:-1px;}  
 </style>  
   
 <body>  
@@ -62,7 +62,7 @@ CSS和JS兼容性问题总结
 <style>  
 body{margin:0;}  
 .wrap{float:left;border:2px solid #000;}  
-.box{width:100px;height:100px;background:red;margin:0 100px;float:left;display:inline; }  
+.box{width:100px;height:100px;background:red;margin:0 100px;float:left;display:inline;}  
 /*  
     IE6下的双边距BUG:  
     在IE6下，块元素有浮动和横向margin的时候，横向的margin值会被放大成两倍  
