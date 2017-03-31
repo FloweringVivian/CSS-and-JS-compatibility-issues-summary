@@ -32,8 +32,29 @@ CSS和JS兼容性问题总结(PC端和移动端)
 
 * input获得焦点软键盘弹出时，position:fixed的footer遮挡内容区域的问题
 
-问题描述：
+问题描述：我的页面中footer是position:fixed的，页面中的input获得焦点，软键盘弹起后，我希望footer隐藏，避免遮挡内容区域。
 
+解决办法：针对ios型号设备，可以通过input获得焦点还是失去焦点来判断，因为ios型号设备软键盘收起时，input会自动失去焦点，而安卓却不一定，安卓必须是点击页面的其他地方，input才会失去焦点，而直接点击软键盘上的完成或者关闭按钮，input不会失去焦点，所以针对安卓，需要使用resize方法，因为对于安卓设备来说，软键盘的弹出和收起，都会触发resize方法。
+
+```javascript
+//ios
+$("input").bind("focus", function(){
+    $("footer").hide();
+}).bind("blur", function(){
+    $("footer").show();
+})
+
+//安卓
+var windowHeight = $(window).height();
+$(window).resize(function(){
+    var nowHeight = $(window).height();
+    if(nowHeight < windowHeight){  //说明软键盘弹出
+        $("footer").hide();
+    }else{  //软键盘收起
+        $("footer").show();
+    }
+})
+```
 
 ## 3. CSS兼容性问题
 * z-index兼容性问题
