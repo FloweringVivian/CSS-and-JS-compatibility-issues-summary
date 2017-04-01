@@ -7,6 +7,8 @@ CSS和JS兼容性问题总结(PC端和移动端)
 
 js六大数据类型：String、Number、Boolean、Null、Undefined、Object
 
+前5种基本的数据类型可以用typeof来判断
+
 ## 2. 移动端兼容性问题（H5兼容性问题）
 * 父元素使用了transform，子元素position:fixed失效的问题
 
