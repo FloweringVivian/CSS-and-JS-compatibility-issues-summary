@@ -59,6 +59,15 @@ $(window).resize(function(){
     }
 })
 ```
+* ios型号设备下输入框默认内阴影
+
+解决办法：
+
+```javascript
+Element{
+-webkit-appearance: none; 
+}
+```
 
 ## 3. CSS兼容性问题
 * z-index兼容性问题
