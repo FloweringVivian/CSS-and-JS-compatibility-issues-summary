@@ -9,6 +9,34 @@ js六大数据类型：String、Number、Boolean、Null、Undefined、Object
 
 前5种基本的数据类型可以用typeof来判断
 
+* $.each()中使用return的问题
+```javascript
+function nextStep(){
+    $.each(objList.templateData, function(key,val){
+        if(val.next == false){
+            alert("列表中含有过期的项，不能进行下一步");
+            return;
+        }
+    });
+    userList();
+}
+```
+
+问题描述：看上面的这段代码，本来我希望的是如果objList.templateData的某一条数据的next值为false的话，就alert提示，并且return，不执行下面的userList()函数，但是实际上这样写还是执行了下面的userList()函数，原因是，$.each进行了封装，本身是个函数，所以return只是return到了$.each这个函数，而不是nextStep()这个函数，看网上的说法，将return换成了return false，也还是不行。
+
+解决办法：换成原生的for循环。
+
+```javascript
+function nextStep(){
+    for(var i=0;i<objList.templateData.length;i++){
+        if(objList.templateData[i].next == false){
+            alert("列表中含有过期的项，不能进行下一步");
+            return;
+        }
+    });
+    userList();
+}
+```
 
 ## 2. 移动端兼容性问题（H5兼容性问题）
 * 父元素使用了transform，子元素position:fixed失效的问题
