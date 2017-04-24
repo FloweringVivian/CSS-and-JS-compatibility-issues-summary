@@ -9,6 +9,8 @@ js六大数据类型：String、Number、Boolean、Null、Undefined、Object
 
 前5种基本的数据类型可以用typeof来判断
 
+------
+
 * $.each()中使用return的问题
 ```javascript
 function nextStep(){
