@@ -40,6 +40,8 @@ function nextStep(){
 }
 ```
 
+------
+
 * 解决window.open打开新窗口被浏览器拦截的问题
 
 
