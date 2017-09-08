@@ -42,9 +42,6 @@ function nextStep(){
 
 ------
 
-* 解决window.open打开新窗口被浏览器拦截的问题
-
-
 ## 2. 移动端兼容性问题（H5兼容性问题）
 * 父元素使用了transform，子元素position:fixed失效的问题
 
