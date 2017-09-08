@@ -90,6 +90,7 @@ $(window).resize(function(){
     }
 })
 ```
+
 * ios型号设备下输入框默认内阴影
 
 解决办法：
