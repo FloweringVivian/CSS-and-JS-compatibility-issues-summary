@@ -356,7 +356,16 @@ DD_belatedPNG.fix('.box');
 </html> 
 ```
 
+* 文字截断火狐浏览器兼容问题
 
+word-break: break-all; 在火狐浏览器不起作用，需要加上一条，如下：
+
+```javascript
+.box {
+    word-break: break-all;
+    word-wrap: break-word;
+}
+```
 
 
 
