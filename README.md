@@ -40,6 +40,16 @@ function nextStep(){
 }
 ```
 
+* IE下JavaScript字符串转换成Date后出现NaN错误
+
+原始字符串 2016-10-11
+
+var  date  = new Date("2016-10-11") 在IE下date是NaN,而其他浏览器正常。
+
+字符串修改成 2016/10/11
+
+var  date  = new Date("2016/10/11")  就正常了
+
 ## 2. 移动端兼容性问题（H5兼容性问题）
 * 父元素使用了transform，子元素position:fixed失效的问题
 
