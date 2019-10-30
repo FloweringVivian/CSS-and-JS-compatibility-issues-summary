@@ -76,6 +76,8 @@ var  date  = new Date("2016/10/11")  就正常了
 }
 ```
 
+------
+
 * input获得焦点软键盘弹出时，position:fixed的footer遮挡内容区域的问题
 
 问题描述：我的页面中footer是position:fixed的，页面中的input获得焦点，软键盘弹起后，我希望footer隐藏，避免遮挡内容区域。
@@ -101,6 +103,8 @@ $(window).resize(function(){
     }
 })
 ```
+
+------
 
 * ios型号设备下输入框默认内阴影
 
@@ -366,8 +370,6 @@ DD_belatedPNG.fix('.box');
 </body>  
 </html> 
 ```
-
-------
 
 ## 4. 浏览器兼容问题
 
